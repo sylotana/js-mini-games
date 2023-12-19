@@ -1,0 +1,1 @@
+import * as rps from './rps/rps.js';
