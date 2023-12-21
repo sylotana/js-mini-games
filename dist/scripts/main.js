@@ -1,0 +1,2 @@
+!function(){"use strict";const o={rock:"scissors",paper:"rock",scissors:"paper"};!function s(c){let e=0,r=0;for(let s=0;s<c;s+=1){const s=(l=prompt("Rock || Paper || Scissors").toLowerCase().trim(),n="rock",console.log(`Player: ${l}`),console.log(`Robot: ${n}`),l===n?(console.log("TIES"),0):o[l]===n?(console.log("Your won!"),!0):(console.log("Loser!"),!1));0!==s&&(s?e+=s:r+=1)}var l,n;if(e===r)return s(1);console.log(`playerScore ${e}`),console.log(`computerScore ${r}`),e>r?console.log("Human WINNER"):e<r&&console.log("Human LOSER")}(5)}();
+//# sourceMappingURL=main.js.map

@@ -12,35 +12,33 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt('Rock || Paper || Scissors').toLowerCase().trim();
-  computerSelection = 'rock'; //getComputerChoice();
+  playerSelection = prompt("Rock || Paper || Scissors").toLowerCase().trim();
+  computerSelection = "rock"; //getComputerChoice();
 
   console.log(`Player: ${playerSelection}`);
   console.log(`Robot: ${computerSelection}`);
 
   if (playerSelection === computerSelection) {
-    console.log('TIES');
+    console.log("TIES");
     return 0;
   }
 
   if (SELECTION[playerSelection] === computerSelection) {
-    console.log('Your won!');
+    console.log("Your won!");
     return true;
   }
 
-  console.log('Loser!');
+  console.log("Loser!");
   return false;
-
 }
-
 
 function game(rounds) {
   let playerScore = 0;
   let computerScore = 0;
 
-  for(let i = 0; i < rounds; i += 1) {
+  for (let i = 0; i < rounds; i += 1) {
     const resultRound = playRound();
-    
+
     if (resultRound === 0) {
       continue;
     }
@@ -51,7 +49,6 @@ function game(rounds) {
     }
 
     computerScore += 1;
-
   }
 
   if (playerScore === computerScore) {
@@ -62,13 +59,13 @@ function game(rounds) {
   console.log(`computerScore ${computerScore}`);
 
   if (playerScore > computerScore) {
-    console.log('Human WINNER')
-    return
+    console.log("Human WINNER");
+    return;
   }
 
   if (playerScore < computerScore) {
-    console.log('Human LOSER')
-    return
+    console.log("Human LOSER");
+    return;
   }
 }
 

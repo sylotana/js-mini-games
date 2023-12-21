@@ -1,1 +1,2 @@
-import * as rps from './rps/rps.js';
+import { rps } from "./rps/rps.js";
+
