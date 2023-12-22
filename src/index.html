@@ -1,15 +1,56 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="page">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minigames</title>
     <link rel="stylesheet" href="styles/main.min.css" />
   </head>
-  <body>
+  <body class="page__body">
+    <header class="header"></header>
+    <main class="main">
+      <section class="rps-container">
+        <div class="round">
+          <p class="round__result">RPS</p>
+          <p class="round__info">"Rock Paper Scissors"</p>
+        </div>
+        <div class="score">
+          <span class="score__number score__number--player">0</span>
+          <span class="score__separator">:</span>
+          <span class="score__number score__number--computer">0</span>
+        </div>
+        <ul class="cards">
+          <li class="card">
+            <button class="card__button" type="button" data-choice="rock">
+              <img class="card__image" src="images/rock.png" alt="" />
+              Rock
+            </button>
+          </li>
+          <li class="card">
+            <button class="card__button" type="button" data-choice="paper">
+              <img class="card__image" src="images/paper.png" alt="" />
+              Paper
+            </button>
+          </li>
+          <li class="card">
+            <button class="card__button" type="button" data-choice="scissors">
+              <img class="card__image" src="images/scissors.png" alt="" />
+              Scissors
+            </button>
+          </li>
+        </ul>
+      </section>
+    </main>
     <!-- <svg>
       <use xlink:href="images/svg/sprite.svg#logo"></use>
     </svg> -->
+    <template id="template-card">
+      <li class="card">
+        <button class="card__button" type="button">
+          <img src="" alt="" />
+        </button>
+      </li>
+    </template>
     <script src="scripts/main.js"></script>
   </body>
 </html>

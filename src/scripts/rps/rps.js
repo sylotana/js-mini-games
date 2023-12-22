@@ -1,8 +1,32 @@
 const SELECTION = {
-  rock: "scissors",
-  paper: "rock",
-  scissors: "paper",
+  rock: ["scissors", "Rock crushes Scissors"],
+  paper: ["rock", "Paper covers Rock"],
+  scissors: ["paper", "Scissors cuts Paper"],
 };
+
+const MAX_SCORE = 5;
+
+const roundHistory = [];
+
+const buttons = document.querySelectorAll('.card__button');
+const roundResult = document.querySelector('.round__result');
+const roundInfo = document.querySelector('.round__info');
+const scorePlayer = document.querySelector('.score__number--player');
+const scoreComputer = document.querySelector('.score__number--computer');
+
+let playerScore = 0;
+let computerScore = 0;
+
+
+buttons.forEach(function (button) {
+  button.addEventListener('click', playRound);
+});
+
+
+function writeHistory(player, computer, score, result) {
+  roundHistory.push({player: player, computer: computer, score: score, result: result });
+}
+
 
 function getComputerChoice() {
   const listSelection = Object.keys(SELECTION);
@@ -11,62 +35,49 @@ function getComputerChoice() {
   return listSelection[randomChoice];
 }
 
-function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt("Rock || Paper || Scissors").toLowerCase().trim();
-  computerSelection = "rock"; //getComputerChoice();
 
-  console.log(`Player: ${playerSelection}`);
-  console.log(`Robot: ${computerSelection}`);
+function checkWinner(player, computer) {
+  if (player === MAX_SCORE || computer === MAX_SCORE) {
+    buttons.forEach(function (button) {
+      button.disabled = true;
+    })
 
-  if (playerSelection === computerSelection) {
-    console.log("TIES");
-    return 0;
+    if (player > computer) {
+      roundResult.textContent = 'player win'
+    } else {
+      roundResult.textContent = 'computer win'
+    }
   }
-
-  if (SELECTION[playerSelection] === computerSelection) {
-    console.log("Your won!");
-    return true;
-  }
-
-  console.log("Loser!");
-  return false;
 }
 
-function game(rounds) {
-  let playerScore = 0;
-  let computerScore = 0;
+function checkResultRound(player, computer) {
 
-  for (let i = 0; i < rounds; i += 1) {
-    const resultRound = playRound();
-
-    if (resultRound === 0) {
-      continue;
-    }
-
-    if (resultRound) {
-      playerScore += resultRound;
-      continue;
-    }
-
+  if (player === computer) {
+    return 'draw';
+  }
+  
+  if (SELECTION[player][0] === computer) {
+    playerScore += 1;
+    checkWinner(playerScore, computerScore);
+    return 'won';
+  }
+  
+  if (SELECTION[computer][0] === player) {
     computerScore += 1;
+    checkWinner(playerScore, computerScore);
+    return 'lost';
   }
 
-  if (playerScore === computerScore) {
-    return game(1);
-  }
-
-  console.log(`playerScore ${playerScore}`);
-  console.log(`computerScore ${computerScore}`);
-
-  if (playerScore > computerScore) {
-    console.log("Human WINNER");
-    return;
-  }
-
-  if (playerScore < computerScore) {
-    console.log("Human LOSER");
-    return;
-  }
 }
 
-game(5);
+
+function playRound(evt) {
+  const player = evt.target.getAttribute('data-choice');
+  const computer = getComputerChoice();
+
+  const result = checkResultRound(player, computer);
+  const score = `${playerScore}:${computerScore}`
+  writeHistory(player, computer, score, result);
+  console.log(roundHistory);
+}
+

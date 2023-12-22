@@ -1,0 +1,8 @@
+.page {
+  font-family: var(--font, sans-serif);
+  font-weight: normal;
+  
+  &__body {
+    margin: 0;
+  }
+}

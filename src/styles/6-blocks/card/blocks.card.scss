@@ -1,0 +1,44 @@
+.card {
+  transition: transform 0.1618s ease-in-out;
+
+  &__button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    border: 2px solid grey;
+    border-radius: 8px;
+    align-items: center;
+    row-gap: 12px;
+    padding-block-end: 24px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(12px) scale(1.1);
+        opacity: 0.8;
+      }
+    }    
+    
+    &_disabled {
+      transition: transform 0.3s ease;
+      cursor: initial;
+      opacity: 0.5;
+    }
+  }
+
+  &__image {
+    pointer-events: none;
+    display: block;
+    width: 100%;
+    transition: transform .5s ease;
+  }
+
+  &__button:hover &__image {
+    transform: translateY(12px) scale(1.1);
+  }
+}

@@ -1,0 +1,29 @@
+.score {
+  display: grid;
+  grid-template-columns: 1fr min-content 1fr;
+  font-size: 192px;
+  line-height: 1;
+  // gap: 12px;
+  margin-block-end: 48px;
+  font-weight: 700;
+  color: white;
+  -webkit-text-stroke: 3px black;
+
+  &__number {
+
+    &--player {
+      position: relative;
+      justify-self: end;
+
+    }
+
+    &--computer {
+      position: relative;
+      justify-self: start;
+    }
+  }
+
+  &__separator {
+    transform: translateY(-8px);
+  }
+}
